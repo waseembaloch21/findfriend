@@ -62,6 +62,19 @@ body {
   }
 }
 
+
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+}
+
 @layer base {
   :root {
     --chart-1: 12 76% 61%;
@@ -80,14 +93,5 @@ body {
   }
 }
 
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
 
 

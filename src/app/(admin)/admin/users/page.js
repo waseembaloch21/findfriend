@@ -49,7 +49,7 @@ const users = [
 export default function Users() {
     return (
       <div className="min-h-screen container mx-auto">
-        <div className="flex justify-between items-center my-4">
+        <div className="flex justify-between itemsF-center my-4">
           <h1 className="font-bold text-xl">Users</h1>
         </div>
        <Table>
@@ -67,7 +67,7 @@ export default function Users() {
         {users.map((user) => (
           <TableRow key={user.fullname}>
             <TableCell className="text-right">
-            <Image src={user.profileImage} height={40} width={40} className="rounded-md"/>
+            <Image src={user.profileImage} alt="sorry Image is displaying" height={40} width={40} className="rounded-md"/>
               </TableCell>
             <TableCell className="font-medium">{user.fullname}</TableCell>
             <TableCell>{user.email}</TableCell>
