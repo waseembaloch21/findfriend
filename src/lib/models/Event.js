@@ -15,6 +15,9 @@ const eventSchema = new Schema({
     address: String,
     createdBy: { type: mongoose.Types.ObjectId, ref: "Users" },
     going: [{ type: mongoose.Types.ObjectId, ref: "Users" }],
+    category: { type: mongoose.Types.ObjectId, ref: "Categories" },
+    subcategory: { type: mongoose.Types.ObjectId, ref: "Subcategories" },
   });
 
-export const EventModal = mongoose.model('Events', eventSchema);
+  export const EventModal =
+  mongoose.models.Events || mongoose.model("Events", eventSchema);

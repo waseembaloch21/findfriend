@@ -13,5 +13,7 @@ const subcategorySchema = new Schema({
       },
 })
 
-export const SubCategoryModal =
- mongoose.model("Subcategories", subcategorySchema);
+export const SubCategoryModal = mongoose.models.Subcategories || mongoose.model(
+  "Subcategories",
+  subcategorySchema
+);

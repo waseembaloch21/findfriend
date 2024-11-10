@@ -12,6 +12,11 @@ const userSchema = new Schema({
       profileImg: String,
       address: String,
       bio: String,
+      role: {
+        type: String,
+        default: "user",
+        enum: ["user", "admin"],
+      },
 })
 
 export const UserModal =
