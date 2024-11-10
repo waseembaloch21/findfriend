@@ -44,24 +44,22 @@ const users = [
 },
 ]
 
-
-
 export default function Users() {
     return (
-      <div className="min-h-screen container mx-auto">
+      <div className="min-h-screen  mx-10">
         <div className="flex justify-between itemsF-center my-4">
           <h1 className="font-bold text-xl">Users</h1>
         </div>
        <Table>
   <TableCaption>A list of your recent Users.</TableCaption>
   <TableHeader>
-    <TableRow>
-      <TableHead className="w-[100px]">FullName</TableHead>
-      <TableHead>Email</TableHead>
-      <TableHead>Location</TableHead>
-      <TableHead className="text-right">Profile Image</TableHead>
-      <TableHead className="text-right">Events</TableHead>
-    </TableRow>
+  <TableRow>
+            <TableHead>Profile Image</TableHead>
+            <TableHead className="w-[100px]">Fullname</TableHead>
+            <TableHead>Email</TableHead>
+            <TableHead>Location</TableHead>
+            <TableHead className="text-right">Events</TableHead>
+          </TableRow>
   </TableHeader>
   <TableBody>
         {users.map((user) => (

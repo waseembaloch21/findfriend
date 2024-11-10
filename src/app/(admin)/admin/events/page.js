@@ -48,7 +48,7 @@ const events = [
 
 export default function Events() {
     return (
-      <div className="min-h-screen container mx-auto">
+      <div className="min-h-screen container mx-10">
         <div className="flex justify-between items-center my-4">
           <h1 className="font-bold text-xl">Events</h1>
         </div>
@@ -67,7 +67,7 @@ export default function Events() {
         {events.map((event) => (
           <TableRow key={event.title}>
             <TableCell className="text-right">
-            <Image src={event.thumbnail} height={40} width={40} className="rounded-md"/>
+            <Image src={event.thumbnail}   style={{ objectFit: "cover" }} height={40} width={40} className="rounded-md"/>
               </TableCell>
             <TableCell className="font-medium">{event.title}</TableCell>
             <TableCell>{event.description}</TableCell>

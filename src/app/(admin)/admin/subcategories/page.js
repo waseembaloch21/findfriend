@@ -52,7 +52,7 @@ export default function categories() {
         {subcategories.map((Category) => (
           <TableRow key={Category.title}>
             <TableCell className="text-right">
-            <Image src={Category.thumbnail} height={40} width={40} className="rounded-md"/>
+            <Image src={Category.thumbnail}   style={{ objectFit: "cover" }} height={40} width={40} className="rounded-md"/>
               </TableCell>
               <TableCell className="font-medium">{Category.Category}</TableCell>
             <TableCell className="font-medium">{Category.title}</TableCell>
