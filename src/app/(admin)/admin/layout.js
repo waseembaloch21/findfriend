@@ -1,11 +1,13 @@
-
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Link from "next/link"
+import { auth } from "../../../../auth";
+import { redirect } from "next/navigation";
 
+export default async function Layout({ children }) {
+    const session = await auth()
+    console.log("session==>",session);
 
-
-
-export default function Layout({ children }) {
+     if (!session) redirect("/signin");
     return (
         <html>
             <body>
