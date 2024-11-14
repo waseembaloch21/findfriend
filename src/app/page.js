@@ -1,7 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { auth, signOut } from "../../auth";
+import Link from "next/link";
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth();
   return (
     <div className="min-h-screen bg-background">
       <header className="bg-primary text-primary-foreground py-12">
@@ -20,6 +23,22 @@ export default function Home() {
           </div>
         </div>
       </header>
+
+      {
+        session ?
+      <form
+      action={async () => {
+        "use server"
+        await signOut()
+      }}
+    >
+      <Button type="submit">Sign Out</Button>
+    </form> :
+      <Link href={'/signin'}>
+       <Button>Sign In</Button>
+      </Link>
+      }
+
     </div>
   );
 }
