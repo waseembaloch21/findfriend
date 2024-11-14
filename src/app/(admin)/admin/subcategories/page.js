@@ -35,9 +35,9 @@ import Image from "next/image";
 
 // ]
 
-export default async function SubCategories() {
-  // console.log("searchParams=>", searchParams);
-  const subcategories = await getSubCategories();
+export default async function SubCategories({searchParams}) {
+   console.log("searchParams=>", searchParams);
+  const subcategories = await getSubCategories(searchParams?.category);
    const categories = (await getCategories()).categories;
     return (
       <div className="min-h-screen  mx-10 px-1">
@@ -45,7 +45,7 @@ export default async function SubCategories() {
           <h1 className="font-bold text-xl">SubCategories</h1>
           <div className="flex gap-3">
           <CategoryDropdown categories={categories}/>
-          <AddSubCategory/>
+          <AddSubCategory categories = {categories}/>
           </div>
         </div>
        <Table>
