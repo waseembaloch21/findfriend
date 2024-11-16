@@ -36,7 +36,7 @@ export default async function Categories() {
         {categories?.categories?.map((Category) => (
           <TableRow key={Category.title}>
             <TableCell className="text-right">
-            <Image src={Category.thumbnail} height={40} width={40} className="rounded-md"/>
+            <Image src={Category.thumbnail} alt="Image" height={40} width={40} className="rounded-md"/>
               </TableCell>
             <TableCell className="font-medium">{Category.title}</TableCell>
             <TableCell>{Category.description}</TableCell>

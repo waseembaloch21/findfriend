@@ -2,9 +2,16 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { auth, signOut } from "../../auth";
 import Link from "next/link";
+import UpcomingEvents from "@/components/UpcomingEvents/UpcomingEvents";
+import { getEvents } from "@/actions/events";
+import { getCategories } from "@/actions/categories";
 
-export default async function Home() {
+export default async function Home({ searchParams }) {
+  console.log("searchparams=>", searchParams);
+  const { category } = searchParams;
   const session = await auth();
+  const { events } = await getEvents(category);
+  const { categories } = await getCategories();
   return (
     <div className="min-h-screen bg-background">
       <header className="bg-primary text-primary-foreground py-12">
@@ -24,21 +31,13 @@ export default async function Home() {
         </div>
       </header>
 
-      {
-        session ?
-      <form
-      action={async () => {
-        "use server"
-        await signOut()
-      }}
-    >
-      <Button type="submit">Sign Out</Button>
-    </form> :
-      <Link href={'/signin'}>
-       <Button>Sign In</Button>
-      </Link>
-      }
-
+      <UpcomingEvents
+       chosenCategory={category}
+       events={events}
+       session={session}
+       categories={categories}
+      />
+      
     </div>
   );
 }
