@@ -11,9 +11,7 @@ import {
 import Image from "next/image";
 import { auth } from "../../../../../auth";
 import { getCategories } from "@/actions/categories";
-
-
-
+import AddEventForm from "@/components/AddEventSheet/AddEventSheet";
 
 export default async function Events() {
   const events = await getEvents();
@@ -23,6 +21,7 @@ export default async function Events() {
     <div className="min-h-screen mx-10">
       <div className="flex justify-between items-center my-4">
         <h1 className="font-bold text-xl">Events</h1>
+        <AddEventForm session={session} categories={categories}/>
       </div>
       <Table>
         <TableCaption>A list of your recent events.</TableCaption>
