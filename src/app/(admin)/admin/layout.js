@@ -8,6 +8,8 @@ export default async function Layout({ children }) {
     console.log("session==>",session);
 
      if (!session) redirect("/signin");
+     if (session && session.role != "admin") redirect("/");
+
     return (
         <html>
             <body>
@@ -29,5 +31,5 @@ export default async function Layout({ children }) {
 
             </body>
         </html>
-    )
+    );
 }

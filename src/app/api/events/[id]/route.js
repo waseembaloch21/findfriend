@@ -10,7 +10,7 @@ export async function GET(request, { params }) {
     .populate("category", "title")
     .populate("createdBy", "fullname email profileImg")
     .populate("subcategory", "title")
-    .populate("going", "fullname email profileImg"); // Populate going field
+    .populate("going", "fullname email profileImg"); 
 
   return Response.json(
     {

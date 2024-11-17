@@ -1,6 +1,6 @@
 import { connectDB } from "@/lib/db/connectDB";
 import { SubCategoryModal } from "@/lib/models/Subcategories";
-
+import { CategoryModal } from "@/lib/models/Category";
 
 export async function GET(request) {
   await connectDB();
