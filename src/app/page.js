@@ -1,10 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { auth, signOut } from "../../auth";
-import Link from "next/link";
 import UpcomingEvents from "@/components/UpcomingEvents/UpcomingEvents";
 import { getEvents } from "@/actions/events";
 import { getCategories } from "@/actions/categories";
+import { auth } from "../../auth";
 
 export default async function Home({ searchParams }) {
   console.log("searchparams=>", searchParams);
