@@ -35,7 +35,7 @@ export function ImageUploader() {
             />
           ) : (
             <span className="text-sm text-gray-600">
-              Click to select an image
+              Click to select an images
             </span>
           )}
           <input
