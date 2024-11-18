@@ -28,6 +28,7 @@ export default function UpcomingEvents({
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
+  const [loading, setLoading] = useState(false);
 
   const handleSelectCategory = (id) => {
     const params = new URLSearchParams(searchParams);
@@ -109,7 +110,9 @@ export default function UpcomingEvents({
                   <span className="text-sm">{event.createdBy.fullname}</span>
                 </div>
                 <Link href={`/event/${event._id}`}>
-                  <Button>View Details</Button>
+                  <Button disabled={loading} >
+                  {loading ? "Loading..." : " View Details"}
+                    </Button>
                 </Link>
               </CardFooter>
             </Card>

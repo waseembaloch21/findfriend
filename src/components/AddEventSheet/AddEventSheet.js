@@ -11,7 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-// import { Autocomplete } from "@react-google-maps/api";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -26,9 +26,6 @@ import {
 } from "@/components/ui/sheet";
 import { addEvent } from "@/actions/events";
 import { useToast } from "@/hooks/use-toast";
-
-// Replace with your actual Google Maps API key
-// const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAP_API_KEY;
 
 const schema = z.object({
   title: z.string().min(1, "Title is required"),

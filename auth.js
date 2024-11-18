@@ -17,38 +17,30 @@ const handleUser = async (profile) => {
 }
  
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  providers: [ Google ],
+  providers: [Google],
   callbacks: {
     async signIn({ account, profile }) {
       const user = await handleUser(profile);
 
-      console.log("user.role==>",user.role);
-      return { ...profile, role: user.role };
-
-      // if (account.provider === "google") {
-      //   return profile.email_verified && profile.email.endsWith("@example.com")
-      // }
-      return true; // Do different verification for other providers that don't have `email_verified`
+      profile.role = user.role;
+      profile._id = user._id;
+      return true
     },
-     async jwt({ token, user }) {
-      
-      const userFromDB = await handleUser(token);
-      console.log("userFromDB==>",userFromDB);
-      
-      if (user) { 
+    async jwt({ token, user, profile, account }) {
+      console.log("profile=>", profile);
+      if (user) {
         // User is available during sign-in
-        token._id = userFromDB._id;
-        token.role = userFromDB.role;
+        token._id = profile._id;
+        token.role = profile.role;
       }
       return token;
     },
-
     session({ session, token }) {
-      console.log("session==>",session );
+      console.log("session data=>", token);
       session.user.id = token.id;
       session.user._id = token._id;
       session.user.role = token.role;
-      return session
+      return session;
     },
   },
-})
+});
