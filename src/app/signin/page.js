@@ -1,7 +1,6 @@
 import { redirect } from "next/navigation";
 import { auth, signIn } from "../../../auth"
 
- 
 export default async function SignIn() {
   const session = await auth();
   console.log("session=>", session);
@@ -17,7 +16,7 @@ export default async function SignIn() {
         await signIn("google")
       }}
     >
-      <button  className="text-white bg-black border-0 py-2 px-6 focus:outline-none  rounded text-lg" type="submit">Signin with Google</button>
+      <button className="text-white bg-black border-0 py-2 px-6 focus:outline-none  rounded text-lg" type="submit">Signin with Google</button>
     </form>
     </div>
   )

@@ -7,10 +7,14 @@ import { auth } from "../../auth";
 
 export default async function Home({ searchParams }) {
   console.log("searchparams=>", searchParams);
-  const { category } = searchParams;
+
+  // Await searchParams and destructure the 'category'
+  const { category } = await Promise.resolve(searchParams);
+
   const session = await auth();
   const { events } = await getEvents(category);
   const { categories } = await getCategories();
+
   return (
     <div className="min-h-screen bg-background">
       <header className="bg-primary text-primary-foreground py-12">
@@ -31,12 +35,11 @@ export default async function Home({ searchParams }) {
       </header>
 
       <UpcomingEvents
-       chosenCategory={category}
-       events={events}
-       session={session}
-       categories={categories}
+        chosenCategory={category}
+        events={events}
+        session={session}
+        categories={categories}
       />
-      
     </div>
   );
 }

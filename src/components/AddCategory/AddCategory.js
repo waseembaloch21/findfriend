@@ -59,7 +59,7 @@ export function AddCategory() {
         <DrawerHeader className="text-left">
           <DrawerTitle>Edit profile</DrawerTitle>
           <DrawerDescription>
-            Make changes to your profile here. Click save when  done.
+            Make changes to your profile here. Click save when done.
           </DrawerDescription>
         </DrawerHeader>
         <ProfileForm className="px-4" />

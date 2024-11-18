@@ -29,7 +29,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async jwt({ token, user, profile, account }) {
       console.log("profile=>", profile);
       if (user) {
-        // User is available during sign-in
         token._id = profile._id;
         token.role = profile.role;
       }
