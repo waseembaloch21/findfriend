@@ -8,7 +8,6 @@ import { auth } from "../../auth";
 export default async function Home({ searchParams }) {
   console.log("searchparams=>", searchParams);
 
-  // Await searchParams and destructure the 'category'
   const { category } = await Promise.resolve(searchParams);
 
   const session = await auth();

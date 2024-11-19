@@ -39,7 +39,6 @@ export default async function Categories() {
               </TableCell>
               <TableCell className="font-medium">{Category.title}</TableCell>
               <TableCell>{Category.description}</TableCell>
-
             </TableRow>
           ))}
         </TableBody>
