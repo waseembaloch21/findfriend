@@ -62,7 +62,7 @@ export default async function SubCategories({searchParams}) {
         {subcategories?.subcategories?.map((subCat) => (
           <TableRow key={subCat.title}>
             <TableCell className="text-right">
-            <Image src={subCat.thumbnail} alt="Image"   style={{ objectFit: "cover" }} height={40} width={40} className="rounded-md"/>
+            <Image src={subCat?.thumbnail} alt="Image" style={{ objectFit: "cover" }} height={40} width={40} className="rounded-md"/>
               </TableCell>
               <TableCell className="font-medium">{subCat.Category?.title}</TableCell>
             <TableCell className="font-medium">{subCat.title}</TableCell>

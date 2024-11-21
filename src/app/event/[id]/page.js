@@ -53,7 +53,7 @@ export default async function EventDetailsPage({ params }) {
         <CardHeader>
           <div className="relative w-full h-64 mb-4">
             <Image
-              src={event.thumbnail}
+              src={event?.thumbnail}
               alt={event.title}
               fill
               className="object-cover rounded-t-lg"
@@ -99,7 +99,7 @@ export default async function EventDetailsPage({ params }) {
             <div className="flex flex-wrap gap-2">
               {event?.going?.map((user) => (
                 <Avatar key={user._id} title={user.fullname}>
-                  <AvatarImage src={user.profileImg} />
+                  <AvatarImage src={user?.profileImg} />
                   <AvatarFallback>{user.fullname.charAt(0)}</AvatarFallback>
                 </Avatar>
               ))}

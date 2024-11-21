@@ -38,7 +38,7 @@ export default async function Events() {
           {events?.events?.map((event) => (
             <TableRow key={event._id}>
               <TableCell className="text-right">
-                <Image src={event.thumbnail} alt="Image" style={{ objectFit: "cover" }} height={40} width={40} className="rounded-md" />
+                <Image src={event?.thumbnail} alt="Image" style={{ objectFit: "cover" }} height={40} width={40} className="rounded-md" />
               </TableCell>
               <TableCell className="font-medium">{event.title}</TableCell>
               <TableCell>{event.description}</TableCell>
