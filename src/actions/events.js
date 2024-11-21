@@ -22,13 +22,13 @@ export const getEvents = async (category) => {
   events = await events.json();
   console.log("Events Fetched successfully");
   return events;
-  revalidatePath("/admin/categories");
+  
 };
 
 export const getSingleEvent = async (id) => {
   let event = await fetch(`${process.env.BASE_URL}api/events/${id}`, {
     cache: "no-cache",
-  })
+  });
   if (event.ok) {
     event = await event.json();
     console.log("Event Fetched successfully");
@@ -36,7 +36,7 @@ export const getSingleEvent = async (id) => {
   } else {
     redirect("/not-found");
   }
-  revalidatePath("/admin/categories");
+
 };
 
 export const goingToEvent = async (id, userId) => {
@@ -46,9 +46,6 @@ export const goingToEvent = async (id, userId) => {
   });
   if (event.ok) {
     revalidatePath(`/events/${id}`);
-    // const res = await event.json();
-    // console.log("Event Updated successfully");
-    // return res;
   } else {
     redirect("/not-found");
   }
