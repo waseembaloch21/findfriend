@@ -6,7 +6,7 @@ export const addSubCategory = async (obj) => {
   const added = await fetch(`${process.env.BASE_URL}api/subcategories`, {
     method: "POST",
     body: JSON.stringify(obj),
-  });
+  })
   if (added.ok) {
     console.log("Subcategories added successfully");
     revalidatePath("/admin/subcategories");

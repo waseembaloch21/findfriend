@@ -6,7 +6,7 @@ export const addComment = async (obj) => {
   const added = await fetch(`${process.env.BASE_URL}api/comments`, {
     method: "POST",
     body: JSON.stringify(obj),
-  });
+  })
   if (added.ok) {
     console.log("Comments added successfully");
     revalidatePath(`/events/${obj.event}`);
