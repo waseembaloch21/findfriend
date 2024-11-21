@@ -53,17 +53,6 @@ export function ImageUploader() {
         value={loading ? "Uploading..." : "Upload"}
         className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
       />
-
-      {/* {image && (
-        <div className="mt-4">
-          <h3 className="text-sm font-medium text-gray-700">Uploaded Image:</h3>
-          <img
-            src={image}
-            alt="Uploaded"
-            className="mt-2 w-full rounded-lg border border-gray-300"
-          />
-        </div>
-      )} */}
     </form>
   );
 }

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { getEvents, getSingleEvent, goingToEvent } from "@/actions/events";
+import { getSingleEvent, goingToEvent } from "@/actions/events";
 import { getCategories } from "@/actions/categories";
 import { auth } from "../../../../auth";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -127,8 +127,7 @@ export default async function EventDetailsPage({ params }) {
                   </span>
                 </Button>
               )}
-              {/* <UserIcon className="mr-2 h-4 w-4" />{" "} */}
-              {/* {isGoingToEvent ? "Going" : "Want to Go"} */}
+
             </form>
           ) : (
             <Link className="w-full" href={"/signin"}>
