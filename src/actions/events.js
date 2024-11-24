@@ -18,7 +18,7 @@ export const getEvents = async (category) => {
   console.log("category in action=>", category);
   let events = await fetch(
     `${process.env.BASE_URL}api/events?category=${category ? category : ""}`
-  );
+  )
   events = await events.json();
   console.log("Events Fetched successfully");
   return events;
@@ -28,7 +28,7 @@ export const getEvents = async (category) => {
 export const getSingleEvent = async (id) => {
   let event = await fetch(`${process.env.BASE_URL}api/events/${id}`, {
     cache: "no-cache",
-  });
+  })
   if (event.ok) {
     event = await event.json();
     console.log("Event Fetched successfully");

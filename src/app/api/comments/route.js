@@ -1,6 +1,5 @@
 import { connectDB } from "@/lib/db/connectDB";
 import { CommentsModal } from "@/lib/models/Comment";
-import { UserModal } from "@/lib/models/User";
 
 export async function GET(request) {
   await connectDB();
