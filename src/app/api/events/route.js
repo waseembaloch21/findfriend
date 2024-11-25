@@ -1,9 +1,12 @@
 import { connectDB } from "@/lib/db/connectDB";
+import { SubCategoryModal } from "@/lib/models/Subcategories";
+import { CategoryModal } from "@/lib/models/Category";
 import { EventModal } from "@/lib/models/Event";
 import { UserModal } from "@/lib/models/User";
 
 export async function GET(request) {
   await connectDB();
+
   const category = request?.nextUrl?.searchParams?.get("category");
   const query = {};
   if (category) {
@@ -28,6 +31,7 @@ export async function GET(request) {
 export async function POST(request) {
   await connectDB();
   const obj = await request.json();
+
   const user = await UserModal.findOne({ _id: obj.createdBy });
   if (!user)
     return Response.json(

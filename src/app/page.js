@@ -7,7 +7,7 @@ import { auth } from "../../auth";
 
 export default async function Home({ searchParams }) {
   console.log("searchparams=>", searchParams);
-  const { category } = await Promise.resolve(searchParams);
+  const { category } = await (searchParams);
   const session = await auth();
   const { events } = await getEvents(category);
   const { categories } = await getCategories();
