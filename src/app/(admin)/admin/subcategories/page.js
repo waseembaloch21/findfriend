@@ -13,28 +13,6 @@ import {
 } from "@/components/ui/table"
 import Image from "next/image";
 
-// const subcategories = [
-// {
-//   title : 'Cricket ',
-//   Category:'Sports',
-//   thumbnail:'https://images.unsplash.com/photo-1471439330580-1493ebc92c13?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGN5Y2xpbmd8ZW58MHx8MHx8fDA%3D',
-//   description : 'All Comunity Member will be have Cycling Race',
-// },
-// {
-//   title : 'Football ',
-//   Category:'Sports',
-//   thumbnail:'https://images.unsplash.com/photo-1471439330580-1493ebc92c13?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGN5Y2xpbmd8ZW58MHx8MHx8fDA%3D',
-//   description : 'All Comunity Member will be have Cycling Race',
-// },
-// {
-//   title : 'Tennis ',
-//   Category:'Sports',
-//   thumbnail:'https://images.unsplash.com/photo-1471439330580-1493ebc92c13?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGN5Y2xpbmd8ZW58MHx8MHx8fDA%3D',
-//   description : 'All Comunity Member will be have Cycling Race',
-// },
-
-// ]
-
 export default async function SubCategories({searchParams}) {
    console.log("searchParams=>", searchParams);
   const subcategories = await getSubCategories(searchParams?.category);

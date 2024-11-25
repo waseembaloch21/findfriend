@@ -69,7 +69,7 @@ export default async function Users() {
             <TableRow key={user._id}>
               <TableCell className="text-right">
                 <Avatar>
-                  <AvatarImage alt="image" height={40} width={40} src={user?.profileImg} />
+                  <AvatarImage alt="image" height={40} width={40} src={user.profileImg} />
                   <AvatarFallback>-</AvatarFallback>
                 </Avatar>
                 {/* <Image src={user.profileImage} alt="sorry Image is displaying" height={40} width={40} className="rounded-md" /> */}
