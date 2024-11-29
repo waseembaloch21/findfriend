@@ -5,10 +5,10 @@ import { redirect } from "next/navigation";
 
 export default async function Layout({ children }) {
     const session = await auth()
-    console.log("session==>",session);
+    console.log("session==>", session);
 
-     if (!session) redirect("/signin");
-     if (session && session.role != "admin") redirect("/");
+    if (!session) redirect("/signin");
+    if (session && session.role != "admin") redirect("/");
 
     return (
         <html>

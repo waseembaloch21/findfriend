@@ -1,6 +1,6 @@
 "use client"
 
-import  React, { useRef, useState } from "react"
+import React, { useRef, useState } from "react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
@@ -34,7 +34,7 @@ import { Label } from "@/components/ui/label"
 import { addSubCategory } from "@/actions/subcategories";
 import { uploadImage } from "@/actions/upload";
 
-export function AddSubCategory({categories}) {
+export function AddSubCategory({ categories }) {
   const [open, setOpen] = useState(false)
   const isDesktop = true
 
@@ -46,7 +46,7 @@ export function AddSubCategory({categories}) {
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            
+
             <DialogTitle>Add Sub Category</DialogTitle>
             <DialogDescription>
               Make changes to your profile here. Click save when  done.
@@ -81,7 +81,7 @@ export function AddSubCategory({categories}) {
   )
 }
 
-function ProfileForm({ className,categories,onClose }) {
+function ProfileForm({ className, categories, onClose }) {
   const [loading, setLoading] = useState(false);
   const formRef = useRef();
   const { toast } = useToast();
@@ -107,9 +107,9 @@ function ProfileForm({ className,categories,onClose }) {
   };
   return (
     <form
-    action={handleAddCategory}
-    className={cn("grid items-start gap-4", className)}>
-     <div className="grid gap-2">
+      action={handleAddCategory}
+      className={cn("grid items-start gap-4", className)}>
+      <div className="grid gap-2">
         <Label htmlFor="title">Title</Label>
         <Input
           required
@@ -134,18 +134,18 @@ function ProfileForm({ className,categories,onClose }) {
           type="file" />
       </div>
       <div className="grid gap-2">
-      <Select name="category">
-      <SelectTrigger>
-        <SelectValue placeholder="Select Category" />
-      </SelectTrigger>
-      <SelectContent>
-        {categories?.map((data) => (
-          <SelectItem key={data._id} value={data._id}>
-            {data.title}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
+        <Select name="category">
+          <SelectTrigger>
+            <SelectValue placeholder="Select Category" />
+          </SelectTrigger>
+          <SelectContent>
+            {categories?.map((data) => (
+              <SelectItem key={data._id} value={data._id}>
+                {data.title}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </div>
       <Button type="submit">Save changes</Button>
     </form>
