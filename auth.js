@@ -1,21 +1,21 @@
-import { connectDB } from "@/lib/db/connectDB"
-import { UserModal } from "@/lib/models/User"
-import NextAuth from "next-auth"
-import Google from "next-auth/providers/google"
+import { connectDB } from "@/lib/db/connectDB";
+import { UserModal } from "@/lib/models/User";
+import NextAuth from "next-auth";
+import Google from "next-auth/providers/google";
 
 const handleUser = async (profile) => {
-    await connectDB()
-    const user = await UserModal.findOne({email: profile.email})
-    if(user) return user;
-    let newUser = new UserModal({
-      fullname: profile.name,
+  await connectDB();
+  const user = await UserModal.findOne({ email: profile.email });
+  if (user) return user;
+  let newUser = new UserModal({
+    fullname: profile.name,
     email: profile.email,
     profileImg: profile.picture,
-    });
-    newUser = await newUser.save();
-    return newUser;
-}
- 
+  });
+  newUser = await newUser.save();
+  return newUser;
+};
+
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [Google],
   callbacks: {
@@ -29,6 +29,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async jwt({ token, user, profile, account }) {
       console.log("profile=>", profile);
       if (user) {
+        // User is available during sign-in
         token._id = profile._id;
         token.role = profile.role;
       }
