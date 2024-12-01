@@ -5,7 +5,6 @@ import { getEvents } from "@/actions/events";
 import { getCategories } from "@/actions/categories";
 import { auth } from "../../auth";
 
-
 function ServerComponent({ data }) {
   if (!data) {
     throw new Error("Data is missing!");
@@ -13,13 +12,10 @@ function ServerComponent({ data }) {
   return <div>{data.title}</div>;
 }
 
-
 function App() {
-  const data = fetchData(); 
+  const data = fetchData();
   return <ServerComponent data={data} />;
 }
-
-
 
 export default async function Home({ searchParams }) {
   console.log("searchparams=>", searchParams);
