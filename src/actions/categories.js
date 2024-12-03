@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 
-const BASE_URL = process.env.BASE_URL || "http://localhost:3000/";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000/";
 
 export const addCategory = async (obj) => {
   try {
@@ -13,7 +13,8 @@ export const addCategory = async (obj) => {
     });
 
     if (!response.ok) {
-      console.error("Failed to add category:", await response.text());
+      const errorText = await response.text();
+      console.error(`Failed to add category: ${response.status} - ${errorText}`);
       throw new Error("Failed to add category");
     }
 
@@ -27,8 +28,10 @@ export const addCategory = async (obj) => {
 export const getCategories = async () => {
   try {
     const response = await fetch(`${BASE_URL}api/categories`);
+
     if (!response.ok) {
-      console.error("Failed to fetch categories:", await response.text());
+      const errorText = await response.text();
+      console.error(`Failed to fetch categories: ${response.status} - ${errorText}`);
       throw new Error("Failed to fetch categories");
     }
 

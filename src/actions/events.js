@@ -21,8 +21,7 @@ export const getEvents = async (category) => {
   )
   events = await events.json();
   console.log("Events Fetched successfully");
-  return events;
-  
+  return events; 
 };
 
 export const getSingleEvent = async (id) => {
@@ -36,7 +35,6 @@ export const getSingleEvent = async (id) => {
   } else {
     redirect("/not-found");
   }
-
 };
 
 export const goingToEvent = async (id, userId) => {

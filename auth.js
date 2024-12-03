@@ -19,9 +19,8 @@ const handleUser = async (profile) => {
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [Google],
   callbacks: {
-    async signIn({ account, profile }) {
+    async signIn({ account, profile }){
       const user = await handleUser(profile);
-
       profile.role = user.role;
       profile._id = user._id;
       return true
@@ -44,6 +43,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       session.user.role = token.role;
       return session;
     },
-    
+
   },
 });

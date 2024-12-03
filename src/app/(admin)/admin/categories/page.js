@@ -7,8 +7,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-
-
 import Image from "next/image";
 import { AddCategory } from "@/components/AddCategory/AddCategory";
 import { getCategories } from "@/actions/categories";
