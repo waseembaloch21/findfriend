@@ -1,29 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import UpcomingEvents from "@/components/UpcomingEvents/UpcomingEvents";
+import { auth } from "../../auth";
 import { getEvents } from "@/actions/events";
 import { getCategories } from "@/actions/categories";
-import { auth } from "../../auth";
 
-function ServerComponent({ data }) {
-  if (!data) {
-    throw new Error("Data is missing!");
-  }
-  return <div>{data.title}</div>;
-}
-
-function App() {
-  const data = fetchData();
-  return <ServerComponent data={data} />;
-}
-
-export default async function Home({ searchParams }) {
+export default async function HomePage({ searchParams }) {
   console.log("searchparams=>", searchParams);
-  const { category } = await (searchParams);
+  const { category } = await searchParams;
   const session = await auth();
   const { events } = await getEvents(category);
   const { categories } = await getCategories();
-
   return (
     <div className="min-h-screen bg-background">
       <header className="bg-primary text-primary-foreground py-12">

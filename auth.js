@@ -21,12 +21,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   callbacks: {
     async signIn({ account, profile }) {
       const user = await handleUser(profile);
-
       profile.role = user.role;
       profile._id = user._id;
       return true
     },
     async jwt({ token, user, profile, account }) {
+      console.log("account=>", account);
       console.log("profile=>", profile);
       if (user) {
         // User is available during sign-in

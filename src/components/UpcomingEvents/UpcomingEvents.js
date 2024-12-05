@@ -42,7 +42,7 @@ export default function UpcomingEvents({
       <main className="container mx-auto py-12">
         <div className="flex justify-between">
           <h2 className="text-3xl font-bold mb-8">Upcoming Events</h2>
-          <div className="flex gap-4">
+          <div className="grid gap-4 md:grid-cols-2 ">
             <SearchDropdown
               categories={categories}
               onSelectCategory={handleSelectCategory}
