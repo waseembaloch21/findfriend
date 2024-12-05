@@ -1,8 +1,9 @@
-"use client"
-import React, { useRef, useState } from "react"
-import { useToast } from "@/hooks/use-toast"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+"use client";
+import React, { useRef, useState } from "react";
+import { useToast } from "@/hooks/use-toast";
+import { cn } from "@/lib/utils";
+// import { useMediaQuery } from "@/hooks/use-media-query";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -10,7 +11,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
+} from "@/components/ui/dialog";
 import {
   Drawer,
   DrawerClose,
@@ -20,15 +21,15 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/drawer"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { uploadImage } from "@/actions/upload"
-import { addCategory } from "@/actions/categories"
+} from "@/components/ui/drawer";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { uploadImage } from "@/actions/upload";
+import { addCategory } from "@/actions/categories";
 
 export function AddCategory() {
-  const [open, setOpen] = useState(false)
-  const isDesktop = true
+  const [open, setOpen] = useState(false);
+  const isDesktop = true;
 
   if (isDesktop) {
     return (
@@ -38,16 +39,16 @@ export function AddCategory() {
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-
             <DialogTitle>Add Category</DialogTitle>
             <DialogDescription>
-              Make changes to your profile here. Click save when done.
+              Make changes to your profile here. Click save when {`you're`}{" "}
+              done.
             </DialogDescription>
           </DialogHeader>
           <ProfileForm />
         </DialogContent>
       </Dialog>
-    )
+    );
   }
 
   return (
@@ -70,13 +71,14 @@ export function AddCategory() {
         </DrawerFooter>
       </DrawerContent>
     </Drawer>
-  )
+  );
 }
 
 function ProfileForm({ className }) {
   const [loading, setLoading] = useState(false);
-  const formRef = useRef()
-  const { toast } = useToast()
+  const formRef = useRef();
+  const { toast } = useToast();
+  
   const handleAddCategory = async (formData) => {
     console.log("formData=>", formData);
     setLoading(true);
@@ -93,12 +95,12 @@ function ProfileForm({ className }) {
     formRef?.current?.reset();
     setLoading(false);
   };
-
   return (
     <form
-      action={handleAddCategory}
       ref={formRef}
-      className={cn("grid items-start gap-4", className)}>
+      action={handleAddCategory}
+      className={cn("grid items-start gap-4", className)}
+    >
       <div className="grid gap-2">
         <Label htmlFor="title">Title</Label>
         <Input
@@ -106,7 +108,8 @@ function ProfileForm({ className }) {
           name="title"
           type="title"
           id="title"
-          placeholder="Sports" />
+          placeholder="Sports"
+        />
       </div>
       <div className="grid gap-2">
         <Label htmlFor="description">Description</Label>
@@ -114,18 +117,16 @@ function ProfileForm({ className }) {
           required
           name="description"
           id="description"
-          placeholder="About Category" />
+          placeholder="About Category"
+        />
       </div>
       <div className="grid gap-2">
         <Label htmlFor="thumbnail">Thumbnail</Label>
-        <Input
-          required
-          name="thumbnail"
-          type="file" />
+        <Input required name="thumbnail" type="file" />
       </div>
       <Button disabled={loading} type="submit">
         {loading ? "Loading..." : "Add Category"}
       </Button>
     </form>
-  )
+  );
 }

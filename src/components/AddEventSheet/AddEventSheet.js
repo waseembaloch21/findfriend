@@ -11,7 +11,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -27,19 +26,23 @@ import {
 import { addEvent } from "@/actions/events";
 import { useToast } from "@/hooks/use-toast";
 
+// Replace with your actual Google Maps API key
+// const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAP_API_KEY;
+
 const schema = z.object({
   title: z.string().min(1, "Title is required"),
   description: z.string().min(1, "Description is required"),
   startTime: z.string().min(1, "Start time is required"),
   endTime: z.string().min(1, "End time is required"),
-  thumbnail: z.string().url("Invalid URL for thumbnail"),
+  thumbnail: z.instanceof(FileList).optional(),
   startDate: z.string().min(1, "Start date is required"),
   endDate: z.string().min(1, "End date is required"),
   category: z.string(),
   lat: z.string(),
   long: z.string(),
   address: z.string().min(1, "Address is required"),
-
+  // Note: createdBy, category, subcategory, and going are not included in the form
+  // as they would typically be handled on the server side or through a separate interface
 });
 
 export default function AddEventForm({ session, categories }) {
@@ -52,6 +55,7 @@ export default function AddEventForm({ session, categories }) {
     handleSubmit,
     setValue,
     reset,
+    register,
     formState: { errors, isSubmitting },
   } = useForm({
     resolver: zodResolver(schema),
@@ -70,22 +74,24 @@ export default function AddEventForm({ session, categories }) {
     },
   });
 
+  const fileRef = register("file");
+
   const onSubmit = async (defaultValues) => {
     console.log(defaultValues);
 
-    const obj = { ...defaultValues };
-    obj.location = {
-      lat: +obj.lat,
-      long: +obj.long,
-    };
-    obj.createdBy = session.user._id;
-    await addEvent(obj);
-    reset();
-
-    setIsOpen(false);
-    toast({
-      title: "Event added successfully",
-    });
+    // const obj = { ...defaultValues };
+    // obj.location = {
+    //   lat: +obj.lat,
+    //   long: +obj.long,
+    // };
+    // obj.createdBy = session.user._id;
+    // await addEvent(obj);
+    // reset();
+    // // Here you would typically send the data to your server
+    // setIsOpen(false);
+    // toast({
+    //   title: "Event added successfully",
+    // });
   };
 
   return (
@@ -210,7 +216,16 @@ export default function AddEventForm({ session, categories }) {
             <Controller
               name="thumbnail"
               control={control}
-              render={({ field }) => <Input {...field} />}
+              render={({ field }) => (
+                <Input
+                  type="file"
+                  placeholder="shadcn"
+                  {...fileRef}
+                  onChange={(event) => {
+                    field.onChange(event.target?.files?.[0] ?? undefined);
+                  }}
+                />
+              )}
             />
             {errors.thumbnail && (
               <p className="text-red-500 text-sm">{errors.thumbnail.message}</p>

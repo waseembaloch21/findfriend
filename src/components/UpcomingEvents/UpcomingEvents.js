@@ -16,6 +16,8 @@ import Link from "next/link";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { SearchDropdown } from "../SearchDropdown/SearchDropdown";
 
+// Placeholder data
+
 export default function UpcomingEvents({
   session,
   categories = [],
@@ -25,7 +27,6 @@ export default function UpcomingEvents({
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
-  const [loading, setLoading] = useState(false);
 
   const handleSelectCategory = (id) => {
     const params = new URLSearchParams(searchParams);
@@ -56,6 +57,21 @@ export default function UpcomingEvents({
             )}
           </div>
         </div>
+
+        {/* <Tabs  defaultValue="All" className="mb-8">
+          <TabsList>
+            {categories.map((category) => (
+              <TabsTrigger
+                className="gap-5"
+                key={category._id}
+                value={category}
+                onClick={() => handleSelectCategory(category)}
+              >
+                {category.title}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+        </Tabs> */}
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {events.map((event) => (
@@ -92,9 +108,7 @@ export default function UpcomingEvents({
                   <span className="text-sm">{event.createdBy.fullname}</span>
                 </div>
                 <Link href={`/event/${event._id}`}>
-                  <Button disabled={loading} >
-                    {loading ? "Loading..." : " View Details"}
-                  </Button>
+                  <Button>View Details</Button>
                 </Link>
               </CardFooter>
             </Card>

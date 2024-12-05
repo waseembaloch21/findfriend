@@ -1,5 +1,6 @@
 import { connectDB } from "@/lib/db/connectDB";
 import { CommentsModal } from "@/lib/models/Comment";
+import { UserModal } from "@/lib/models/User";
 
 export async function GET(request) {
   await connectDB();
@@ -31,7 +32,3 @@ export async function POST(request) {
     { status: 201 }
   );
 }
-
-export async function PUT(request) { }
-
-export async function DELETE(request) { }

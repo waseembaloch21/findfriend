@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { getSingleEvent, goingToEvent } from "@/actions/events";
-import { getCategories } from "@/actions/categories";
 import { auth } from "../../../../auth";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -53,7 +52,7 @@ export default async function EventDetailsPage({ params }) {
         <CardHeader>
           <div className="relative w-full h-64 mb-4">
             <Image
-              src={event?.thumbnail}
+              src={event.thumbnail}
               alt={event.title}
               fill
               className="object-cover rounded-t-lg"
@@ -99,7 +98,7 @@ export default async function EventDetailsPage({ params }) {
             <div className="flex flex-wrap gap-2">
               {event?.going?.map((user) => (
                 <Avatar key={user._id} title={user.fullname}>
-                  <AvatarImage src={user?.profileImg} />
+                  <AvatarImage src={user.profileImg} />
                   <AvatarFallback>{user.fullname.charAt(0)}</AvatarFallback>
                 </Avatar>
               ))}
@@ -127,7 +126,8 @@ export default async function EventDetailsPage({ params }) {
                   </span>
                 </Button>
               )}
-
+              {/* <UserIcon className="mr-2 h-4 w-4" />{" "} */}
+              {/* {isGoingToEvent ? "Going" : "Want to Go"} */}
             </form>
           ) : (
             <Link className="w-full" href={"/signin"}>

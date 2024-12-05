@@ -2,44 +2,21 @@
 
 import { revalidatePath } from "next/cache";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000/";
-
 export const addCategory = async (obj) => {
-  try {
-    const response = await fetch(`${BASE_URL}api/categories`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(obj),
-    });
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error(`Failed to add category: ${response.status} - ${errorText}`);
-      throw new Error("Failed to add category");
-    }
-
+  const added = await fetch(`${process.env.BASE_URL}api/categories`, {
+    method: "POST",
+    body: JSON.stringify(obj),
+  });
+  if (added.ok) {
     console.log("Category added successfully");
     revalidatePath("/admin/categories");
-  } catch (error) {
-    console.error("Error in addCategory:", error.message);
   }
 };
 
 export const getCategories = async () => {
-  try {
-    const response = await fetch(`${BASE_URL}api/categories`);
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error(`Failed to fetch categories: ${response.status} - ${errorText}`);
-      throw new Error("Failed to fetch categories");
-    }
-
-    const categories = await response.json();
-    console.log("Categories fetched successfully");
-    return categories;
-  } catch (error) {
-    console.error("Error in getCategories:", error.message);
-    return [];
-  }
+  let categories = await fetch(`${process.env.BASE_URL}api/categories`);
+  categories = await categories.json();
+  console.log("Category Fetched successfully");
+  return categories;
+  revalidatePath("/admin/categories");
 };

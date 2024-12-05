@@ -16,7 +16,7 @@ export default async function Header() {
   return (
     <div className="bg-primary">
       <div className="container py-3 mx-auto flex justify-between items-center">
-        <h1 className="font-mono text-2xl text-primary-foreground">Event</h1>
+        <h1 className="font-mono text-2xl text-primary-foreground">LOGO</h1>
         {session ? (
           <DropdownMenu>
             <DropdownMenuTrigger>

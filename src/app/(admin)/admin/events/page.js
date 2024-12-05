@@ -1,4 +1,5 @@
 import { getEvents } from "@/actions/events";
+import AddEventForm from "@/components/AddEventSheet/AddEventSheet";
 import {
   Table,
   TableBody,
@@ -7,11 +8,10 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
+} from "@/components/ui/table";
 import Image from "next/image";
 import { auth } from "../../../../../auth";
 import { getCategories } from "@/actions/categories";
-import AddEventForm from "@/components/AddEventSheet/AddEventSheet";
 
 export default async function Events() {
   const events = await getEvents();
@@ -27,7 +27,7 @@ export default async function Events() {
         <TableCaption>A list of your recent events.</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead >Thumbnail</TableHead>
+            <TableHead>Thumbnail</TableHead>
             <TableHead className="w-[100px]">Title</TableHead>
             <TableHead>Description</TableHead>
             <TableHead>Location</TableHead>
@@ -38,12 +38,17 @@ export default async function Events() {
           {events?.events?.map((event) => (
             <TableRow key={event._id}>
               <TableCell className="text-right">
-                <Image src={event?.thumbnail} alt="Image" style={{ objectFit: "cover" }} height={40} width={40} className="rounded-md" />
+                <Image
+                  src={event.thumbnail}
+                  style={{ objectFit: "cover" }}
+                  height={40}
+                  width={40}
+                />
               </TableCell>
               <TableCell className="font-medium">{event.title}</TableCell>
               <TableCell>{event.description}</TableCell>
               <TableCell>{event.address}</TableCell>
-              <TableCell>{event.date}</TableCell>
+              <TableCell>{event.startDate}</TableCell>
             </TableRow>
           ))}
         </TableBody>

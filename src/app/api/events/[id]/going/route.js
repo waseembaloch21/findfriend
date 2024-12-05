@@ -1,8 +1,12 @@
 import { connectDB } from "@/lib/db/connectDB";
+import { SubCategoryModal } from "@/lib/models/Subcategories";
+import { CategoryModal } from "@/lib/models/Category";
 import { EventModal } from "@/lib/models/Event";
+import { UserModal } from "@/lib/models/User";
 
 export async function POST(request, { params }) {
   await connectDB();
+
   const event = await EventModal.findOne({ _id: params.id });
   if (!event)
     return Response.json(

@@ -21,13 +21,13 @@ export async function POST(request) {
 
   return Response.json(
     {
-      msg: "Category Added Successfully",
+      msg: "Category Added Successfully ",
       category: newCategory,
     },
     { status: 201 }
   );
 }
 
-export async function PUT(request) { }
+export async function PUT(request) {}
 
-export async function DELETE(request) { }
+export async function DELETE(request) {}
