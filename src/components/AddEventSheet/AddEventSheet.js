@@ -34,7 +34,7 @@ const schema = z.object({
   description: z.string().min(1, "Description is required"),
   startTime: z.string().min(1, "Start time is required"),
   endTime: z.string().min(1, "End time is required"),
-  thumbnail: z.instanceof(FileList).optional(),
+  thumbnail: z.string().url("Invalid URL for thumbnail"),
   startDate: z.string().min(1, "Start date is required"),
   endDate: z.string().min(1, "End date is required"),
   category: z.string(),
@@ -79,19 +79,19 @@ export default function AddEventForm({ session, categories }) {
   const onSubmit = async (defaultValues) => {
     console.log(defaultValues);
 
-    // const obj = { ...defaultValues };
-    // obj.location = {
-    //   lat: +obj.lat,
-    //   long: +obj.long,
-    // };
-    // obj.createdBy = session.user._id;
-    // await addEvent(obj);
-    // reset();
-    // // Here you would typically send the data to your server
-    // setIsOpen(false);
-    // toast({
-    //   title: "Event added successfully",
-    // });
+    const obj = { ...defaultValues };
+    obj.location = {
+      lat: +obj.lat,
+      long: +obj.long,
+    };
+    obj.createdBy = session.user._id;
+    await addEvent(obj);
+    reset();
+    // Here you would typically send the data to your server
+    setIsOpen(false);
+    toast({
+      title: "Event added successfully",
+    });
   };
 
   return (
@@ -216,21 +216,13 @@ export default function AddEventForm({ session, categories }) {
             <Controller
               name="thumbnail"
               control={control}
-              render={({ field }) => (
-                <Input
-                  type="file"
-                  placeholder="shadcn"
-                  {...fileRef}
-                  onChange={(event) => {
-                    field.onChange(event.target?.files?.[0] ?? undefined);
-                  }}
-                />
-              )}
+              render={({ field }) => <Input {...field} />}
             />
             {errors.thumbnail && (
               <p className="text-red-500 text-sm">{errors.thumbnail.message}</p>
             )}
           </div>
+
           <div className="flex">
             <div>
               <Label htmlFor="lat">Lat</Label>
