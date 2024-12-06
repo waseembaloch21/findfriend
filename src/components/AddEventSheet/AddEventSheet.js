@@ -26,8 +26,6 @@ import {
 import { addEvent } from "@/actions/events";
 import { useToast } from "@/hooks/use-toast";
 
-// Replace with your actual Google Maps API key
-// const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAP_API_KEY;
 
 const schema = z.object({
   title: z.string().min(1, "Title is required"),
@@ -41,8 +39,7 @@ const schema = z.object({
   lat: z.string(),
   long: z.string(),
   address: z.string().min(1, "Address is required"),
-  // Note: createdBy, category, subcategory, and going are not included in the form
-  // as they would typically be handled on the server side or through a separate interface
+  
 });
 
 export default function AddEventForm({ session, categories }) {
@@ -87,7 +84,6 @@ export default function AddEventForm({ session, categories }) {
     obj.createdBy = session.user._id;
     await addEvent(obj);
     reset();
-    // Here you would typically send the data to your server
     setIsOpen(false);
     toast({
       title: "Event added successfully",
