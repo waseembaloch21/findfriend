@@ -12,8 +12,6 @@ import {
 import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-
-
 export default async function Users() {
   const users = await getUsers();
   return (
