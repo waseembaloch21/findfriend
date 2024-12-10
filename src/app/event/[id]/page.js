@@ -29,8 +29,9 @@ import relativeTime from "dayjs/plugin/relativeTime";
 dayjs.extend(relativeTime);
 
 export default async function EventDetailsPage({ params }) {
-  const { event } = await getSingleEvent(params.id);
-  const { comments } = await getComments(params.id);
+  const { id } = await params; 
+  const { event } = await getSingleEvent(id);
+  const { comments } = await getComments(id);
   if (!event) redirect("not-found");
   const session = await auth();
 

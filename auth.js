@@ -20,27 +20,27 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [Google],
   callbacks: {
     async signIn({ account, profile }) {
+      if (!profile || !profile.email) {
+        console.error("Profile or email missing in sign-in callback");
+        return false; // Prevent sign-in
+      }
       const user = await handleUser(profile);
       profile.role = user.role;
       profile._id = user._id;
-      return true
+      return true;
     },
-    async jwt({ token, user, profile, account }) {
-      console.log("account=>", account);
-      console.log("profile=>", profile);
-      if (user) {
-        // User is available during sign-in
+    async jwt({ token, account, profile, user }) {
+      if (profile) {
         token._id = profile._id;
         token.role = profile.role;
       }
       return token;
     },
-    session({ session, token }) {
-      console.log("session data=>", token);
-      session.user.id = token.id;
+    async session({ session, token }) {
       session.user._id = token._id;
       session.user.role = token.role;
       return session;
     },
   },
+  
 });

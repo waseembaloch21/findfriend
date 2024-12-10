@@ -15,15 +15,27 @@ export const addEvent = async (obj) => {
 };
 
 export const getEvents = async (category) => {
-  console.log("category in action=>", category);
-  let events = await fetch(
-    `${process.env.BASE_URL}api/events?category=${category ? category : ""}`
-  );
-  events = await events.json();
-  console.log("Events Fetched successfully");
-  return events;
-  revalidatePath("/admin/categories");
+  console.log("Category passed to getEvents:", category);
+
+  try {
+    const response = await fetch(
+      `${process.env.BASE_URL}api/events?category=${category || ""}`
+    );
+
+    if (!response.ok) {
+      console.error("Failed to fetch events");
+      return [];
+    }
+
+    const events = await response.json();
+    console.log("Events fetched successfully:", events);
+    return events;
+  } catch (error) {
+    console.error("Error fetching events:", error);
+    return [];
+  }
 };
+
 
 export const getSingleEvent = async (id) => {
   let event = await fetch(`${process.env.BASE_URL}api/events/${id}`, {
