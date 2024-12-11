@@ -192,6 +192,9 @@ export default async function EventDetailsPage({ params }) {
           )}
         </CardFooter>
       </Card>
+        <Link href={'/'}>
+      <Button className="flex justify-center items-center text-center">Go Back</Button>
+        </Link>
     </div>
   );
 }
