@@ -1,5 +1,5 @@
 "use client";
-
+import { Loader2 } from "lucide-react"
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -25,9 +25,15 @@ export default function UpcomingEvents({
   events = [],
   chosenCategory,
 }) {
+
+  const [isLoading, setIsLoading] = useState(false);
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
+
+  const handleClick = () => {
+    setIsLoading(true);
+  };
 
   const handleSelectCategory = (id) => {
     const params = new URLSearchParams(searchParams);
@@ -84,8 +90,8 @@ export default function UpcomingEvents({
               <CardContent>
                 <div className="aspect-video w-full mb-4">
                   <Image
-                   height={60}
-                   width={200}
+                    height={60}
+                    width={200}
                     src={event.thumbnail}
                     alt={event.title}
                     className="object-cover w-full h-full rounded-md"
@@ -104,16 +110,22 @@ export default function UpcomingEvents({
               <CardFooter className="flex justify-between items-center">
                 <div className="flex items-center">
                   <Image
-                   height={32}
-                   width={32}
+                    height={32}
+                    width={32}
                     src={event.createdBy.profileImg}
                     alt={event.createdBy.fullname}
                     className="w-8 h-8 rounded-full w mr-2"
                   />
                   <span className="text-sm">{event.createdBy.fullname}</span>
                 </div>
-                <Link href={`/event/${event._id}`}>
-                  <Button>View Details</Button>
+                <Link href={`/event/${event._id}`} onClick={handleClick}>
+                  <Button>
+                    {isLoading ? (
+                      <Loader2 className="animate-spin" />
+                    ) : (
+                      "View Details"
+                    )}
+                  </Button>
                 </Link>
               </CardFooter>
             </Card>
