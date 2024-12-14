@@ -103,10 +103,12 @@ export default function UpcomingEvents({
               </CardContent>
               <CardFooter className="flex justify-between items-center">
                 <div className="flex items-center">
-                  <img
+                  <Image
+                   height={32}
+                   width={32}
                     src={event.createdBy.profileImg}
                     alt={event.createdBy.fullname}
-                    className="w-8 h-8 rounded-full mr-2"
+                    className="w-8 h-8 rounded-full w mr-2"
                   />
                   <span className="text-sm">{event.createdBy.fullname}</span>
                 </div>
