@@ -17,7 +17,7 @@ import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { SearchDropdown } from "../SearchDropdown/SearchDropdown";
 import Image from "next/image";
 
-// Placeholder data
+
 
 export default function UpcomingEvents({
   session,
