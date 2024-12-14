@@ -15,6 +15,7 @@ import AddEventForm from "../AddEventSheet/AddEventSheet";
 import Link from "next/link";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { SearchDropdown } from "../SearchDropdown/SearchDropdown";
+import Image from "next/image";
 
 // Placeholder data
 
@@ -82,7 +83,9 @@ export default function UpcomingEvents({
               </CardHeader>
               <CardContent>
                 <div className="aspect-video w-full mb-4">
-                  <img
+                  <Image
+                   height={60}
+                   width={200}
                     src={event.thumbnail}
                     alt={event.title}
                     className="object-cover w-full h-full rounded-md"
