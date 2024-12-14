@@ -10,6 +10,7 @@ import {
 
 import { AddCategory } from "@/components/AddCategory/AddCategory";
 import { getCategories } from "@/actions/categories";
+import Image from "next/image";
 
 export default async function Categories() {
   const categories = await getCategories();
@@ -34,7 +35,7 @@ export default async function Categories() {
           {categories?.categories?.map((category) => (
             <TableRow key={category.title}>
               <TableCell className="text-right">
-                <img
+                <Image
                   src={category.thumbnail}
                   style={{ objectFit: "cover" }}
                   height={40}
