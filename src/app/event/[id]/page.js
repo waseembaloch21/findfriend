@@ -83,7 +83,7 @@ export default async function EventDetailsPage({ params }) {
           <Separator className="my-4" />
           <div className="flex items-center space-x-4">
             <Avatar>
-              <AvatarImage src={event.createdBy.profileImg} />
+              <AvatarImage  src={event.createdBy.profileImg} />
               <AvatarFallback>
                 {event.createdBy.fullname.charAt(0)}
               </AvatarFallback>
