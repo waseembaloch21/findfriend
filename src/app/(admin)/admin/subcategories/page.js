@@ -68,6 +68,7 @@ export default async function SubCategories({ searchParams }) {
             <TableRow key={subCat.title}>
               <TableCell className="text-right">
                 <Image
+                alt="SubCategory Image"
                   src={subCat.thumbnail}
                   style={{ objectFit: "cover" }}
                   height={40}

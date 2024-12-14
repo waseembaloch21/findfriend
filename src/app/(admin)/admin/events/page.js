@@ -39,6 +39,7 @@ export default async function Events() {
             <TableRow key={event._id}>
               <TableCell className="text-right">
                 <Image
+                alt="Events Image"
                   src={event.thumbnail}
                   style={{ objectFit: "cover" }}
                   height={40}

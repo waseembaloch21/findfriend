@@ -36,6 +36,7 @@ export default async function Categories() {
             <TableRow key={category.title}>
               <TableCell className="text-right">
                 <Image
+                alt="Category Image"
                   src={category.thumbnail}
                   style={{ objectFit: "cover" }}
                   height={40}
