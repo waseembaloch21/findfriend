@@ -29,7 +29,7 @@ import relativeTime from "dayjs/plugin/relativeTime";
 dayjs.extend(relativeTime);
 
 export default async function EventDetailsPage({ params }) {
-  const { id } = await params; 
+  const { id } = await params;
   const { event } = await getSingleEvent(id);
   const { comments } = await getComments(id);
   if (!event) redirect("not-found");
@@ -83,7 +83,7 @@ export default async function EventDetailsPage({ params }) {
           <Separator className="my-4" />
           <div className="flex items-center space-x-4">
             <Avatar>
-              <AvatarImage  src={event.createdBy.profileImg} />
+              <AvatarImage src={event.createdBy.profileImg} />
               <AvatarFallback>
                 {event.createdBy.fullname.charAt(0)}
               </AvatarFallback>
@@ -192,9 +192,9 @@ export default async function EventDetailsPage({ params }) {
           )}
         </CardFooter>
       </Card>
-        <Link href={'/'}>
-      <Button className="flex justify-center items-center text-center">Go Back</Button>
-        </Link>
+      <Link href={'/'}>
+        <Button className="flex justify-center items-center text-center">Go Back</Button>
+      </Link>
     </div>
   );
 }
