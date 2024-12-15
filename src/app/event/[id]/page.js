@@ -110,7 +110,7 @@ export default async function EventDetailsPage({ params }) {
           {session ? (
             <form
               action={async () => {
-                "use server";
+                 "use server";
                 await goingToEvent(params.id, session.user._id);
               }}
             >

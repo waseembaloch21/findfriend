@@ -26,13 +26,13 @@ export default function UpcomingEvents({
   chosenCategory,
 }) {
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [loadingEventId, setLoadingEventId] = useState(null);
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
 
-  const handleClick = () => {
-    setIsLoading(true);
+  const handleClick = (id) => {
+    setLoadingEventId(id);
   };
 
   const handleSelectCategory = (id) => {
@@ -95,6 +95,7 @@ export default function UpcomingEvents({
                     src={event.thumbnail}
                     alt={event.title}
                     className="object-cover w-full h-full rounded-md"
+                    priority={true}
                   />
                 </div>
                 <p className="flex items-center mb-2">
@@ -118,9 +119,9 @@ export default function UpcomingEvents({
                   />
                   <span className="text-sm">{event.createdBy.fullname}</span>
                 </div>
-                <Link href={`/event/${event._id}`} onClick={handleClick}>
-                  <Button>
-                    {isLoading ? (
+                <Link href={`/event/${event._id}`}>
+                  <Button onClick={() => handleClick(event._id)}>
+                    {loadingEventId === event._id ? (
                       <Loader2 className="animate-spin" />
                     ) : (
                       "View Details"
