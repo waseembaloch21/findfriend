@@ -57,6 +57,7 @@ export default async function EventDetailsPage({ params }) {
               alt={event.title}
               fill
               className="object-cover rounded-t-lg"
+              priority={true}
             />
           </div>
           <Badge className="mb-2 w-36">{event.category.title}</Badge>

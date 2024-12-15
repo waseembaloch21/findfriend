@@ -95,7 +95,6 @@ export default function UpcomingEvents({
                     src={event.thumbnail}
                     alt={event.title}
                     className="object-cover w-full h-full rounded-md"
-                    priority={true}
                   />
                 </div>
                 <p className="flex items-center mb-2">
