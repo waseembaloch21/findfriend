@@ -7,7 +7,6 @@ import { getEvents } from "@/actions/events";
 import { getCategories } from "@/actions/categories";
 
 export default async function HomePage({ searchParams }) {
-  console.log("searchparams=>", searchParams);
   const { category } = await searchParams;
   const session = await auth();
   const { events } = await getEvents(category);

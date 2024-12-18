@@ -21,7 +21,7 @@ export default async function Header() {
           <DropdownMenu>
             <DropdownMenuTrigger>
               <Avatar>
-                <AvatarImage src={session.user.image} alt="Image" />
+                <AvatarImage src={session?.user?.image} alt="Image" />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
             </DropdownMenuTrigger>
