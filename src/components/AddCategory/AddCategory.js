@@ -78,7 +78,7 @@ function ProfileForm({ className }) {
   const [loading, setLoading] = useState(false);
   const formRef = useRef();
   const { toast } = useToast();
-  
+
   const handleAddCategory = async (formData) => {
     console.log("formData=>", formData);
     setLoading(true);

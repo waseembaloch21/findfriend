@@ -39,7 +39,7 @@ const schema = z.object({
   lat: z.string(),
   long: z.string(),
   address: z.string().min(1, "Address is required"),
-  
+
 });
 
 export default function AddEventForm({ session, categories }) {
